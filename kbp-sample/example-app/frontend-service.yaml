@@ -1,0 +1,18 @@
+# frontend-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    # 레포지토리와 책이 다른 부분, 키가 app이 아니라 run임
+    run: frontend
+  name: frontend
+  namespace: default
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    # 여기도
+    run: frontend
+  type: ClusterIP
